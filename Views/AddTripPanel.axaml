@@ -1,0 +1,56 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:CompileBindings="False"
+             x:Class="CarTrips.Views.AddTripPanel">
+   
+    <Border Classes="Card" VerticalAlignment="Stretch" Width="270" Padding="15">
+        <Grid RowDefinitions="Auto, Auto, *, Auto">
+            
+            <Label Grid.Row="0" Content="{DynamicResource TextAddTripTitle}" 
+                   Foreground="{DynamicResource PrimaryTextColor}" FontSize="20" 
+                   FontWeight="Bold" Margin="0,0,0,10" Padding="0"/>
+            
+            <Border Grid.Row="1" Height="1" Background="{DynamicResource SecondaryTextColor}" Margin="0,0,0,15"/>
+            
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                <StackPanel Spacing="10" Margin="0,0,10,0">
+                    <TextBox Text="{Binding AddTripVM.NewDate}">
+                        <TextBox.Watermark><DynamicResource ResourceKey="WatermarkDate"/></TextBox.Watermark>
+                    </TextBox>
+
+                    <TextBox Text="{Binding AddTripVM.NewDeparture}">
+                        <TextBox.Watermark><DynamicResource ResourceKey="WatermarkDeparture"/></TextBox.Watermark>
+                    </TextBox>
+
+                    <TextBox Text="{Binding AddTripVM.NewDestination}">
+                        <TextBox.Watermark><DynamicResource ResourceKey="WatermarkDestination"/></TextBox.Watermark>
+                    </TextBox>
+
+                    <TextBox Text="{Binding AddTripVM.NewDistance}">
+                        <TextBox.Watermark><DynamicResource ResourceKey="WatermarkDistanceKm"/></TextBox.Watermark>
+                    </TextBox>
+
+                    <TextBox Text="{Binding AddTripVM.NewTripType}">
+                        <TextBox.Watermark><DynamicResource ResourceKey="WatermarkTripType"/></TextBox.Watermark>
+                    </TextBox>
+                    
+                    <TextBox Text="{Binding AddTripVM.NewCar}">
+                        <TextBox.Watermark><DynamicResource ResourceKey="WatermarkCar"/></TextBox.Watermark>
+                    </TextBox>
+                    
+                    <TextBlock Text="{Binding AddTripVM.ErrorMessage}" 
+                               Foreground="#EF4444" FontSize="12" TextWrapping="Wrap"
+                               HorizontalAlignment="Center" Margin="0,5" 
+                               IsVisible="{Binding AddTripVM.ErrorMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <Button Grid.Row="3" Content="{DynamicResource BtnAddTripSubmit}" 
+                    Background="#00FF7F" Foreground="Black" FontSize="18" FontWeight="Bold"
+                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                    VerticalAlignment="Center" Height="90" CornerRadius="8" 
+                    Margin="0,15,0,0" Padding="0,30,0,0"
+                    Command="{Binding AddTripVM.AddTripCommand}"/>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,74 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="using:CarTrips.Models"
+             xmlns:viewModels="clr-namespace:CarTrips.ViewModels"
+             x:CompileBindings="False"
+             x:Class="CarTrips.Views.CenterTripsPanel">
+    
+    <Border Classes="Card" Margin="0">
+        <Grid RowDefinitions="Auto, *">
+            <Label Grid.Row="0" 
+                   Content="{DynamicResource TextRecentTrips}" 
+                   Foreground="{DynamicResource SecondaryTextColor}" 
+                   FontSize="16" 
+                   Margin="0,0,0,20" 
+                   Padding="0"/>
+            
+            <ScrollViewer Grid.Row="1">
+                <ItemsControl ItemsSource="{Binding RecentTrips}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="viewModels:Trip">
+                            <Border BorderBrush="{DynamicResource SecondaryTextColor}" 
+                                    BorderThickness="0,0,0,1" 
+                                    Padding="0,15">
+                                <Grid ColumnDefinitions="50, *, *, *, *">
+                                    
+                                    <StackPanel Grid.Column="0">
+                                        <Label Content="{DynamicResource LabelId}" 
+                                               Foreground="{DynamicResource SecondaryTextColor}" 
+                                               FontSize="10" Padding="0"/>
+                                        <TextBlock Text="{Binding Id}" 
+                                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1">
+                                        <Label Content="{DynamicResource LabelDeparture}" 
+                                               Foreground="{DynamicResource SecondaryTextColor}" 
+                                               FontSize="10" Padding="0"/>
+                                        <TextBlock Text="{Binding Departure}" 
+                                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="2">
+                                        <Label Content="{DynamicResource LabelDestination}" 
+                                               Foreground="{DynamicResource SecondaryTextColor}" 
+                                               FontSize="10" Padding="0"/>
+                                        <TextBlock Text="{Binding Destination}" 
+                                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="3">
+                                        <Label Content="{DynamicResource LabelArrivalDate}" 
+                                               Foreground="{DynamicResource SecondaryTextColor}" 
+                                               FontSize="10" Padding="0"/>
+                                        <TextBlock Text="{Binding Date}" 
+                                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="4">
+                                        <Label Content="{DynamicResource LabelDistancePanel}" 
+                                               Foreground="{DynamicResource SecondaryTextColor}" 
+                                               FontSize="10" Padding="0"/>
+                                        <TextBlock Text="{Binding Distance, StringFormat='{}{0} км'}" 
+                                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                                    </StackPanel>
+                                    
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>

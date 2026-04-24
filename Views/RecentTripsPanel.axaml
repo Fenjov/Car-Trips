@@ -1,0 +1,90 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CarTrips.ViewModels"
+             xmlns:models="using:CarTrips.Models"
+             x:Class="CarTrips.Views.RecentTripsPanel"
+             x:DataType="vm:MainWindowViewModel"
+             x:CompileBindings="False">
+
+    <Grid x:Name="RootGrid" RowDefinitions="Auto, *" Margin="10,0,20,20">
+        
+        <Grid Grid.Row="0" ColumnDefinitions="280, *, 280" Margin="0,0,0,20">
+            
+            <StackPanel Grid.Column="0" Spacing="15">
+                <Border Background="{DynamicResource CardBackgroundColor}" CornerRadius="20" Padding="20" Height="100">
+                    <StackPanel VerticalAlignment="Center">
+                        <Label Content="{DynamicResource TextTotalFuelSpent}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="12" Padding="0"/>
+                        <TextBlock Text="{Binding HistoryVM.TotalSpentAllTrips, StringFormat='{}{0:N0} грн'}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="24" FontWeight="Bold" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="{DynamicResource CardBackgroundColor}" CornerRadius="20" Padding="20" Height="100">
+                    <StackPanel VerticalAlignment="Center">
+                        <Label Content="{DynamicResource TextTotalDistance}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="12" Padding="0"/>
+                        <TextBlock Text="{Binding HistoryVM.TotalDistanceAllTrips, StringFormat='{}{0} км'}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="24" FontWeight="Bold" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <Border Grid.Column="1" Background="{DynamicResource CardBackgroundColor}" CornerRadius="20" Padding="25" Margin="20,0">
+                <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*, *">
+                    <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding HistoryVM.SearchDate}" Watermark="{DynamicResource WatermarkDate}" Margin="0,0,10,12" CornerRadius="15"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding HistoryVM.SearchId}" Watermark="{DynamicResource WatermarkId}" Margin="10,0,0,12" CornerRadius="15"/>
+                    <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding HistoryVM.SearchDistance}" Watermark="{DynamicResource WatermarkDistance}" Margin="0,0,10,12" CornerRadius="15"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding HistoryVM.SearchType}" Watermark="{DynamicResource WatermarkType}" Margin="10,0,0,12" CornerRadius="15"/>
+
+                    <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
+                            Content="{DynamicResource BtnSearch}" Command="{Binding HistoryVM.SearchTripsCommand}"
+                            Background="#00FF7F" Foreground="Black" FontWeight="Bold"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                            Height="45" CornerRadius="15" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" Background="White" CornerRadius="20" Padding="20">
+                <Grid RowDefinitions="Auto, *">
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+                        <Label Content="{DynamicResource TextTotalTrips}" Foreground="Black" FontSize="14" FontWeight="SemiBold" Padding="0" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding HistoryVM.TotalTripsCount}" Foreground="Black" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <Image Grid.Row="1" Source="avares://CarTrips/Assets/Porshe.gif" Stretch="Uniform" VerticalAlignment="Bottom" Height="80"/>
+                </Grid>
+            </Border>
+            
+        </Grid>
+
+        <Border Grid.Row="1" Background="{DynamicResource CardBackgroundColor}" CornerRadius="20" Padding="20">
+            <Grid RowDefinitions="Auto, *">
+                <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Margin="0,0,0,15">
+                    <Label Content="{DynamicResource TextRecentTrips}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="16" Padding="0"/>
+                    <Label Grid.Column="1" Content="{DynamicResource TextFilter}" Foreground="{DynamicResource SecondaryTextColor}" Cursor="Hand" Padding="0"/>
+                </Grid>
+
+                <ScrollViewer Grid.Row="1">
+                    <ItemsControl ItemsSource="{Binding HistoryVM.FilteredTrips}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="vm:Trip">
+                                <Border BorderBrush="{DynamicResource SecondaryTextColor}" BorderThickness="0,0,0,1" Padding="0,12">
+                                    <Grid ColumnDefinitions="40, 1.2*, 1.2*, 1*, 1.2*, 0.8*, 1*, 1*, 40">
+                                        <TextBlock Grid.Column="0" Text="{Binding Id}" Foreground="{DynamicResource SecondaryTextColor}" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Departure}" Foreground="{DynamicResource PrimaryTextColor}" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Destination}" Foreground="{DynamicResource PrimaryTextColor}" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Car}" Foreground="{DynamicResource PrimaryTextColor}" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding Date}" Foreground="{DynamicResource PrimaryTextColor}" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="5" Text="{Binding Distance, StringFormat='{}{0} км'}" Foreground="{DynamicResource PrimaryTextColor}" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="6" Text="{Binding EstimatedCost, StringFormat='{}{0:N0} грн'}" Foreground="#00FF7F" FontWeight="Bold" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="7" Text="{Binding TripType}" Foreground="{DynamicResource PrimaryTextColor}" VerticalAlignment="Center"/>
+                                        
+                                        <Button Grid.Column="8" Command="{Binding #RootGrid.DataContext.HistoryVM.DeleteTripCommand}" CommandParameter="{Binding}"
+                                                Background="#EF4444" Width="30" Height="30" CornerRadius="15">
+                                            <Label Content="🗑" Foreground="White" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0"/>
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

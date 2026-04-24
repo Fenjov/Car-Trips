@@ -1,0 +1,36 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CarTrips.App"
+             RequestedThemeVariant="Dark"> 
+             
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="AppBackgroundColor" Color="#1E1E2E"/> 
+                    <SolidColorBrush x:Key="CardBackgroundColor" Color="#2A395A"/> 
+                    <SolidColorBrush x:Key="PrimaryTextColor" Color="White"/> 
+                    <SolidColorBrush x:Key="SecondaryTextColor" Color="#A0ABC0"/> 
+                </ResourceDictionary>
+                
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="AppBackgroundColor" Color="#F3F4F6"/> 
+                    <SolidColorBrush x:Key="CardBackgroundColor" Color="White"/> 
+                    <SolidColorBrush x:Key="PrimaryTextColor" Color="#1C2742"/> 
+                    <SolidColorBrush x:Key="SecondaryTextColor" Color="#4B5563"/> 
+                </ResourceDictionary>
+                
+            </ResourceDictionary.ThemeDictionaries>
+            
+       
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceInclude Source="/Assets/LangUA.axaml" />
+        </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+</Application>

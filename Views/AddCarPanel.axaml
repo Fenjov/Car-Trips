@@ -1,0 +1,85 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CarTrips.Views.AddCarPanel" 
+             x:CompileBindings="False">
+    
+    <Border Classes="Card" VerticalAlignment="Stretch" Padding="20">
+        <Grid RowDefinitions="Auto, *, Auto">
+            
+            <Label Grid.Row="0" 
+                   Content="{DynamicResource TitleAddCar}" 
+                   FontSize="22" 
+                   FontWeight="Bold" 
+                   Foreground="{DynamicResource PrimaryTextColor}" 
+                   Margin="0,0,0,20" 
+                   Padding="0"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="25">
+                    
+                    <StackPanel Grid.Column="0" Spacing="20">
+                        <StackPanel>
+                            <Label Classes="FieldLabel" Content="{DynamicResource LabelBrand}"/>
+                            <TextBox Classes="DarkInput" Text="{Binding CarsVM.NewBrand}">
+                                <TextBox.Watermark><DynamicResource ResourceKey="WatermarkBrand"/></TextBox.Watermark>
+                            </TextBox>
+                        </StackPanel>
+                        
+                        <StackPanel>
+                            <Label Classes="FieldLabel" Content="{DynamicResource LabelEngine}"/>
+                            <TextBox Classes="DarkInput" Text="{Binding CarsVM.NewEngine}">
+                                <TextBox.Watermark><DynamicResource ResourceKey="WatermarkEngine"/></TextBox.Watermark>
+                            </TextBox>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Classes="FieldLabel" Content="{DynamicResource LabelLastService}"/>
+                            <TextBox Classes="DarkInput" Text="{Binding CarsVM.NewService}">
+                                <TextBox.Watermark><DynamicResource ResourceKey="WatermarkService"/></TextBox.Watermark>
+                            </TextBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Spacing="20">
+                        <StackPanel>
+                            <Label Classes="FieldLabel" Content="{DynamicResource LabelMileage}"/>
+                            <TextBox Classes="DarkInput" Text="{Binding CarsVM.NewMileage}">
+                                <TextBox.Watermark><DynamicResource ResourceKey="WatermarkMileage"/></TextBox.Watermark>
+                            </TextBox>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Classes="FieldLabel" Content="{DynamicResource LabelConsumption}"/>
+                            <TextBox Classes="DarkInput" Text="{Binding CarsVM.NewConsumption}">
+                                <TextBox.Watermark><DynamicResource ResourceKey="WatermarkConsumption"/></TextBox.Watermark>
+                            </TextBox>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Classes="FieldLabel" Content="{DynamicResource LabelFuelType}"/>
+                            <ComboBox Classes="DarkInput" SelectedItem="{Binding CarsVM.NewFuel}" HorizontalAlignment="Stretch">
+                                <ComboBoxItem Content="{DynamicResource TextPetrol}"/>
+                                <ComboBoxItem Content="{DynamicResource TextDiesel}"/>
+                                <ComboBoxItem Content="{DynamicResource TextElectro}"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+
+            <Button Grid.Row="2" 
+                    Content="{DynamicResource BtnAddCarSubmit}" 
+                    Command="{Binding CarsVM.AddCarCommand}"
+                    Background="#00FF7F" 
+                    Foreground="Black" 
+                    FontSize="24" 
+                    FontWeight="Bold"
+                    HorizontalAlignment="Stretch" 
+                    HorizontalContentAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Height="60" 
+                    CornerRadius="10" 
+                    Margin="0,20,0,0"/>
+        </Grid>
+    </Border>
+</UserControl>

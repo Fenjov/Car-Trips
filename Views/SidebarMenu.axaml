@@ -1,0 +1,38 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CarTrips.ViewModels"
+             x:DataType="vm:MainWindowViewModel"
+             x:Class="CarTrips.Views.SidebarMenu">
+    
+    <StackPanel Background="{DynamicResource AppBackgroundColor}" Margin="10,20,0,0" Spacing="5">
+        
+        <Button Classes="MenuBtn" Command="{Binding GoToPageCommand}" CommandParameter="Головна">
+            <StackPanel Orientation="Horizontal" Spacing="15">
+                <TextBlock Text="" VerticalAlignment="Center"/>
+                <Label Content="{DynamicResource MenuHome}" VerticalAlignment="Center" Padding="0"/>
+            </StackPanel>
+        </Button>
+        
+        <Button Classes="MenuBtn" Command="{Binding GoToPageCommand}" CommandParameter="Додати машину">
+            <StackPanel Orientation="Horizontal" Spacing="15">
+                <TextBlock Text="" VerticalAlignment="Center"/>
+                <Label Content="{DynamicResource MenuAddCar}" TextBlock.TextWrapping="Wrap" Width="80" VerticalAlignment="Center" Padding="0"/>
+            </StackPanel>
+        </Button>
+        
+        <Button Classes="MenuBtn" Command="{Binding GoToPageCommand}" CommandParameter="Машина">
+            <StackPanel Orientation="Horizontal" Spacing="15">
+                <TextBlock Text="" VerticalAlignment="Center"/>
+                <Label Content="{DynamicResource MenuMyCar}" VerticalAlignment="Center" Padding="0"/>
+            </StackPanel>
+        </Button>
+        
+        <Button Classes="MenuBtn" Command="{Binding GoToPageCommand}" CommandParameter="Історія поїздок">
+            <StackPanel Orientation="Horizontal" Spacing="15">
+                <TextBlock Text="" VerticalAlignment="Center"/>
+                <Label Content="{DynamicResource MenuHistory}" TextBlock.TextWrapping="Wrap" Width="80" VerticalAlignment="Center" Padding="0"/>
+            </StackPanel>
+        </Button>
+        
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="App.axaml" value="CarTrips.csproj" />
+        <entry key="Views/AddCarPanel.axaml" value="CarTrips.csproj" />
+        <entry key="Views/AddTripPanel.axaml" value="CarTrips.csproj" />
+        <entry key="Views/CenterTripsPanel.axaml" value="CarTrips.csproj" />
+        <entry key="Views/MainWindow.axaml" value="CarTrips.csproj" />
+        <entry key="Views/MyCarsPanel.axaml" value="CarTrips.csproj" />
+        <entry key="Views/RecentTripsPanel.axaml" value="CarTrips.csproj" />
+        <entry key="Views/SettingsPanel.axaml" value="CarTrips.csproj" />
+        <entry key="Views/SidebarMenu.axaml" value="CarTrips.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

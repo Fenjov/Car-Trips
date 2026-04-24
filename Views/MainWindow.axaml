@@ -1,0 +1,136 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="using:CarTrips.Views"
+        xmlns:vm="using:CarTrips.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="700"
+        x:Class="CarTrips.Views.MainWindow"
+        x:CompileBindings="False"
+        Icon="/Assets/14984793.gif"
+        Title="CarTrips"
+        Background="{DynamicResource AppBackgroundColor}"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+        <Style Selector="Border.GlassCard">
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="BoxShadow" Value="0 15 40 0 #60000000"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Offset="0" Color="#602A3855" />
+                        <GradientStop Offset="1" Color="#202A3855" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Offset="0" Color="#50FFFFFF" />
+                        <GradientStop Offset="0.5" Color="#10FFFFFF" />
+                        <GradientStop Offset="1" Color="#30FFFFFF" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="Border.Card">
+            <Setter Property="Background" Value="{DynamicResource CardBackgroundColor}"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="BorderThickness" Value="0.5"/>
+            <Setter Property="BoxShadow" Value="0 15 40 0 #60000000"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Offset="0" Color="#50FFFFFF" />
+                        <GradientStop Offset="0.5" Color="#10FFFFFF" />
+                        <GradientStop Offset="1" Color="#30FFFFFF" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="{DynamicResource AppBackgroundColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="Padding" Value="10,8"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="60, *" ColumnDefinitions="200, *">
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                Background="{DynamicResource CardBackgroundColor}" 
+                BorderBrush="{DynamicResource SecondaryTextColor}" BorderThickness="0,0,0,1">
+            <Grid ColumnDefinitions="Auto, *, Auto">
+                <Image Source="avares://CarTrips/Assets/Машина.png" Width="30" Height="30" Margin="20,0,0,0"/>
+                
+                <Label Grid.Column="1" Content="{DynamicResource TextTripCenter}" 
+                       Foreground="{DynamicResource PrimaryTextColor}" FontSize="20" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                    <Button Command="{Binding GoToPageCommand}" CommandParameter="Налаштування" Background="Transparent">
+                        <Image Source="avares://CarTrips/Assets/setings.png" Width="30" Height="30"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <views:SidebarMenu Grid.Row="1" Grid.Column="0"/>
+
+        <Grid Grid.Row="1" Grid.Column="1" Margin="20">
+            
+            <Grid IsVisible="{Binding IsHomeVisible}" ColumnDefinitions="*, 350">
+                <Grid Grid.Column="0" RowDefinitions="Auto, *" Margin="0,0,20,0">
+                    <Grid Grid.Row="0" ColumnDefinitions="*, *" Margin="0,0,0,20">
+                        <Border Classes="Card" Grid.Column="0" Margin="0,0 ,10,0">
+                            <StackPanel>
+                                <Label Content="{DynamicResource TextDiesel}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*, *">
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="OKKO" Foreground="{DynamicResource SecondaryTextColor}" Margin="0,5"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="96,45" Foreground="#EF4444" FontSize="18" HorizontalAlignment="Right"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="UPG" Foreground="{DynamicResource SecondaryTextColor}" Margin="0,5"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="73,89" Foreground="#22C55E" FontSize="18" HorizontalAlignment="Right"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="SOKAR" Foreground="{DynamicResource SecondaryTextColor}" Margin="0,5"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Text="87,24" Foreground="#EAB308" FontSize="18" HorizontalAlignment="Right"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="Card" Grid.Column="1" Margin="10,0,0,0">
+                            <StackPanel>
+                                <Label Content="{DynamicResource TextPetrol}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*, *">
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="WOG" Foreground="{DynamicResource SecondaryTextColor}" Margin="0,5"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="74,49" Foreground="#EAB308" FontSize="18" HorizontalAlignment="Right"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Ukrnafta" Foreground="{DynamicResource SecondaryTextColor}" Margin="0,5"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="73,89" Foreground="#22C55E" FontSize="18" HorizontalAlignment="Right"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="SHELL" Foreground="{DynamicResource SecondaryTextColor}" Margin="0,5"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Text="76,67" Foreground="#EF4444" FontSize="18" HorizontalAlignment="Right"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                    
+                    <views:CenterTripsPanel Grid.Row="1" VerticalAlignment="Stretch"/>
+                </Grid>
+
+                <views:AddTripPanel Grid.Column="1" VerticalAlignment="Stretch"/>
+            </Grid>
+
+            <Grid IsVisible="{Binding IsSettingsVisible}">
+                <views:SettingsPanel DataContext="{Binding SettingsVM}" />
+            </Grid>
+
+            <views:AddCarPanel IsVisible="{Binding IsAddCarVisible}" VerticalAlignment="Stretch"/>
+            <views:MyCarsPanel IsVisible="{Binding IsMyCarVisible}" VerticalAlignment="Stretch"/>
+            <views:RecentTripsPanel IsVisible="{Binding IsHistory}" VerticalAlignment="Stretch"/>
+            
+        </Grid>
+    </Grid>
+</Window>

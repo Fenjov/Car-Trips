@@ -1,0 +1,51 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:CarTrips.ViewModels"
+             x:Class="CarTrips.Views.SettingsPanel"
+             x:DataType="vm:SettingsViewModel"
+             x:CompileBindings="False">
+
+    <Border Background="{DynamicResource CardBackgroundColor}" 
+            CornerRadius="20" 
+            Padding="30" 
+            VerticalAlignment="Stretch" 
+            HorizontalAlignment="Stretch">
+        
+        <StackPanel Spacing="25">
+            <Label Content="{DynamicResource TextSettings}" 
+                   Foreground="{DynamicResource PrimaryTextColor}" 
+                   FontSize="26" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,10"
+                   Padding="0"/>
+
+            <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto">
+                
+                <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                    <Label Content="{DynamicResource TextTheme}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="18" Padding="0"/>
+                    <Label Content="{DynamicResource TextThemeDesc}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="12" Padding="0"/>
+                </StackPanel>
+                
+                <ToggleSwitch Grid.Row="0" Grid.Column="1" 
+                              IsChecked="{Binding IsLightTheme, Mode=TwoWay}" 
+                              OnContent="{DynamicResource TextThemeLight}" 
+                              OffContent="{DynamicResource TextThemeDark}" 
+                              Foreground="{DynamicResource PrimaryTextColor}" 
+                              VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,20,0,0">
+                    <Label Content="{DynamicResource TextLanguage}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="18" Padding="0"/>
+                    <Label Content="{DynamicResource TextLangDesc}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="12" Padding="0"/>
+                </StackPanel>
+                
+                <ToggleSwitch Grid.Row="1" Grid.Column="1" 
+                              IsChecked="{Binding IsEnglish, Mode=TwoWay}" 
+                              OnContent="{DynamicResource TextLangEn}" 
+                              OffContent="{DynamicResource TextLangUa}" 
+                              Foreground="{DynamicResource PrimaryTextColor}"
+                              VerticalAlignment="Center"
+                              Margin="0,20,0,0"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>
