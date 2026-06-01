@@ -57,10 +57,14 @@
 
                         <StackPanel>
                             <Label Classes="FieldLabel" Content="{DynamicResource LabelFuelType}"/>
-                            <ComboBox Classes="DarkInput" SelectedItem="{Binding CarsVM.NewFuel}" HorizontalAlignment="Stretch">
-                                <ComboBoxItem Content="{DynamicResource TextPetrol}"/>
-                                <ComboBoxItem Content="{DynamicResource TextDiesel}"/>
-                                <ComboBoxItem Content="{DynamicResource TextElectro}"/>
+                            
+                            <ComboBox SelectedItem="{Binding CarsVM.NewFuel}" 
+                                      HorizontalAlignment="Stretch">
+                                <ComboBox.Items>
+                                    <x:String>Бензин</x:String>
+                                    <x:String>Дизель</x:String>
+                                    <x:String>Електро</x:String>
+                                </ComboBox.Items>
                             </ComboBox>
                         </StackPanel>
                     </StackPanel>

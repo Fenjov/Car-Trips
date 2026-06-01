@@ -46,7 +46,12 @@
                         <Label Content="{DynamicResource TextTotalTrips}" Foreground="Black" FontSize="14" FontWeight="SemiBold" Padding="0" HorizontalAlignment="Center"/>
                         <TextBlock Text="{Binding HistoryVM.TotalTripsCount}" Foreground="Black" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center"/>
                     </StackPanel>
-                    <Image Grid.Row="1" Source="avares://CarTrips/Assets/Porshe.gif" Stretch="Uniform" VerticalAlignment="Bottom" Height="80"/>
+        
+                    <Image Grid.Row="1" 
+                           Source="avares://CarTrips/Assets/Porsche-911-GT3.gif" 
+                           Stretch="Uniform" 
+                           VerticalAlignment="Bottom" 
+                           Height="80"/>
                 </Grid>
             </Border>
             
@@ -62,7 +67,7 @@
                 <ScrollViewer Grid.Row="1">
                     <ItemsControl ItemsSource="{Binding HistoryVM.FilteredTrips}">
                         <ItemsControl.ItemTemplate>
-                            <DataTemplate x:DataType="vm:Trip">
+                            <DataTemplate x:DataType="models:Trip">
                                 <Border BorderBrush="{DynamicResource SecondaryTextColor}" BorderThickness="0,0,0,1" Padding="0,12">
                                     <Grid ColumnDefinitions="40, 1.2*, 1.2*, 1*, 1.2*, 0.8*, 1*, 1*, 40">
                                         <TextBlock Grid.Column="0" Text="{Binding Id}" Foreground="{DynamicResource SecondaryTextColor}" VerticalAlignment="Center"/>

@@ -17,7 +17,7 @@
             <ScrollViewer Grid.Row="1">
                 <ItemsControl ItemsSource="{Binding RecentTrips}">
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate x:DataType="viewModels:Trip">
+                        <DataTemplate x:DataType="models:Trip">
                             <Border BorderBrush="{DynamicResource SecondaryTextColor}" 
                                     BorderThickness="0,0,0,1" 
                                     Padding="0,15">

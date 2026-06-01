@@ -1,0 +1,71 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="using:CarTrips.Models"
+             x:CompileBindings="False"
+             x:Class="CarTrips.Views.ServiceStationsPanel">
+    
+    <Border Classes="Card" Margin="0">
+        <Grid RowDefinitions="Auto, Auto, *">
+            
+            <StackPanel Grid.Row="0" Margin="0,0,0,15">
+                <Label Content="{DynamicResource TitleServiceStations}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="22" FontWeight="Bold" Padding="0"/>
+                <TextBlock Text="{Binding StatusMessage}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="14"/>
+            </StackPanel>
+
+            <Grid Grid.Row="1" ColumnDefinitions="*, Auto" Margin="0,0,0,20">
+                <TextBox Grid.Column="0" 
+                         Text="{Binding CityName}" 
+                         Watermark="{DynamicResource WatermarkServiceCity}" 
+                         VerticalContentAlignment="Center" 
+                         Margin="0,0,10,0"/>
+                
+                <Button Grid.Column="1" 
+                        Content="{DynamicResource BtnSearchServices}" 
+                        Command="{Binding SearchServicesCommand}" 
+                        Background="#00FF7F" 
+                        Foreground="Black" 
+                        FontWeight="Bold" 
+                        Padding="20,10" 
+                        CornerRadius="8" 
+                        Height="40" 
+                        VerticalContentAlignment="Center"/>
+            </Grid>
+
+            <ScrollViewer Grid.Row="2">
+                <Grid>
+                    <ProgressBar IsIndeterminate="True" 
+                                 IsVisible="{Binding IsLoading}" 
+                                 VerticalAlignment="Top" 
+                                 Height="4" 
+                                 Foreground="#00FF7F"/>
+                    
+                    <ItemsControl ItemsSource="{Binding FoundServices}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="models:Station">
+                                <Border BorderBrush="{DynamicResource SecondaryTextColor}" BorderThickness="0,0,0,1" Padding="0,15">
+                                    <Grid ColumnDefinitions="*, *, Auto">
+                                        
+                                        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                            <Label Content="{DynamicResource LabelServiceName}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="11" Padding="0"/>
+                                            <TextBlock Text="{Binding Name}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16" FontWeight="Bold" TextWrapping="Wrap"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                                            <Label Content="{DynamicResource LabelServiceAddress}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="11" Padding="0"/>
+                                            <TextBlock Text="{Binding Address}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="14" TextWrapping="Wrap"/>
+                                        </StackPanel>
+
+                                        <Border Grid.Column="2" Background="#1E293B" CornerRadius="6" Padding="8,4" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding StationType}" Foreground="#00FF7F" FontSize="12"/>
+                                        </Border>
+                                        
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+</UserControl>

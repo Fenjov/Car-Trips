@@ -4,14 +4,19 @@
     <option name="projectPerEditor">
       <map>
         <entry key="App.axaml" value="CarTrips.csproj" />
+        <entry key="Assets/LangEN.axaml" value="CarTrips.csproj" />
+        <entry key="Assets/LangUA.axaml" value="CarTrips.csproj" />
         <entry key="Views/AddCarPanel.axaml" value="CarTrips.csproj" />
         <entry key="Views/AddTripPanel.axaml" value="CarTrips.csproj" />
         <entry key="Views/CenterTripsPanel.axaml" value="CarTrips.csproj" />
+        <entry key="Views/LoginPanel.axaml" value="CarTrips.csproj" />
         <entry key="Views/MainWindow.axaml" value="CarTrips.csproj" />
         <entry key="Views/MyCarsPanel.axaml" value="CarTrips.csproj" />
         <entry key="Views/RecentTripsPanel.axaml" value="CarTrips.csproj" />
+        <entry key="Views/ServiceStationsPanel.axaml" value="CarTrips.csproj" />
         <entry key="Views/SettingsPanel.axaml" value="CarTrips.csproj" />
         <entry key="Views/SidebarMenu.axaml" value="CarTrips.csproj" />
+        <entry key="Views/StationsPanel.axaml" value="CarTrips.csproj" />
       </map>
     </option>
   </component>

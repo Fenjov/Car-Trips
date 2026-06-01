@@ -10,7 +10,9 @@ namespace CarTrips.Services;
 
 public class TripService
 {
-    private readonly string _jsonFilePath = "my_new_trips.json";
+    // ГЕНІАЛЬНА ЗМІНА ТУТ: беремо ім'я юзера і додаємо "_trips.json"
+    // Наприклад, для Олега це буде "Олег_trips.json"
+    private string _jsonFilePath => $"{SessionManager.CurrentUsername}_trips.json";
 
     public List<Trip> LoadTrips()
     {

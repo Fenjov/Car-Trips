@@ -33,6 +33,20 @@
                 <Label Content="{DynamicResource MenuHistory}" TextBlock.TextWrapping="Wrap" Width="80" VerticalAlignment="Center" Padding="0"/>
             </StackPanel>
         </Button>
+
+        <Button Classes="MenuBtn" Command="{Binding GoToPageCommand}" CommandParameter="Заправки">
+            <StackPanel Orientation="Horizontal" Spacing="15">
+                <TextBlock Text="" VerticalAlignment="Center"/>
+                <Label Content="{DynamicResource MenuStations}" VerticalAlignment="Center" Padding="0"/>
+            </StackPanel>
+        </Button>
+        
+        <Button Classes="MenuBtn" Command="{Binding GoToPageCommand}" CommandParameter="СТО">
+            <StackPanel Orientation="Horizontal" Spacing="15">
+                <TextBlock Text="   ️" VerticalAlignment="Center"/>
+                <Label Content="{DynamicResource MenuServiceStations}" VerticalAlignment="Center" Padding="0"/>
+            </StackPanel>
+        </Button>
         
     </StackPanel>
 </UserControl>

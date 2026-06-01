@@ -1,5 +1,14 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <x:String x:Key="TextLoginTitle">Login System</x:String>
+    <x:String x:Key="TextUsername">Username</x:String>
+    <x:String x:Key="TextPassword">Password</x:String>
+    <x:String x:Key="TextLoginWatermark">Enter username...</x:String>
+    <x:String x:Key="TextPasswordWatermark">Enter password...</x:String>
+    <x:String x:Key="TextLoginBtn">Sign In</x:String>
+    <x:String x:Key="TextRegisterBtn">Register</x:String>
+
     <x:String x:Key="TextSettings">Settings</x:String>
     <x:String x:Key="TextTheme">Color Scheme</x:String>
     <x:String x:Key="TextThemeDesc">Switch between light and dark themes</x:String>
@@ -9,6 +18,7 @@
     <x:String x:Key="TextLangDesc">Change application language</x:String>
     <x:String x:Key="TextLangEn">English</x:String>
     <x:String x:Key="TextLangUa">Ukrainian</x:String>
+    <x:String x:Key="TextLogout">Log Out</x:String>
 
     <x:String x:Key="TextTripCenter">Trip Center</x:String>
     <x:String x:Key="TextDiesel">Diesel</x:String>
@@ -17,44 +27,71 @@
     <x:String x:Key="TitleAddCar">Add New Car</x:String>
     <x:String x:Key="LabelBrand">Brand</x:String>
     <x:String x:Key="WatermarkBrand">e.g., Audi</x:String>
-    <x:String x:Key="LabelEngine">Engine Volume</x:String>
+    <x:String x:Key="LabelEngine">Engine capacity</x:String>
     <x:String x:Key="WatermarkEngine">e.g., 2.0</x:String>
     <x:String x:Key="LabelLastService">Last Service</x:String>
     <x:String x:Key="WatermarkService">e.g., 01.01.2026</x:String>
     <x:String x:Key="LabelMileage">Mileage</x:String>
     <x:String x:Key="WatermarkMileage">e.g., 135000 km</x:String>
-    <x:String x:Key="LabelConsumption">Average Consumption</x:String>
-    <x:String x:Key="WatermarkConsumption">e.g., 7.5 L/100km</x:String>
+    <x:String x:Key="LabelConsumption">Average consumption</x:String>
+    <x:String x:Key="WatermarkConsumption">e.g., 7.5 l/100km</x:String>
     <x:String x:Key="LabelFuelType">Fuel Type</x:String>
-    <x:String x:Key="TextElectro">Electric</x:String>
+    <x:String x:Key="TextElectro">Electro</x:String>
     <x:String x:Key="BtnAddCar">Add Car</x:String>
+    <x:String x:Key="BtnAddCarSubmit">Add Car</x:String>
+
     <x:String x:Key="MenuHome">Home</x:String>
     <x:String x:Key="MenuAddCar">Add Car</x:String>
     <x:String x:Key="MenuMyCar">Car</x:String>
     <x:String x:Key="MenuHistory">Trip History</x:String>
-    <x:String x:Key="TextTotalFuelSpent">Total spent on fuel</x:String>
+    <x:String x:Key="Men.Home">Home</x:String>
+    <x:String x:Key="Men.AddCar">Add Car</x:String>
+    <x:String x:Key="Men.MyCar">Car</x:String>
+    <x:String x:Key="Men.History">Trip History</x:String>
+    <x:String x:Key="MenuStations">Gas Stations</x:String>
+    <x:String x:Key="MenuServiceStations">Service Stations</x:String>
+    
+    <x:String x:Key="TextTotalFuelSpent">Total fuel spent</x:String>
     <x:String x:Key="TextTotalDistance">Total distance driven</x:String>
     <x:String x:Key="WatermarkDate">Date</x:String>
     <x:String x:Key="WatermarkId">ID</x:String>
+    <x:String x:Key="WatermarkID">ID</x:String>
     <x:String x:Key="WatermarkDistance">Distance</x:String>
     <x:String x:Key="WatermarkType">Type</x:String>
     <x:String x:Key="BtnSearch">Search</x:String>
-    <x:String x:Key="TextTotalTrips">Total trips</x:String>
-    <x:String x:Key="TextRecentTrips">Recent trips</x:String>
-    <x:String x:Key="TextFilter">Filter ⬆️</x:String>
-    <x:String x:Key="TextTotalCars">Total cars</x:String>
-    <x:String x:Key="TextTotalSpent">Total spent</x:String>
+    <x:String x:Key="TextTotalTrips">Total Trips</x:String>
+    <x:String x:Key="TextRecentTrips">Recent Trips</x:String>
+    
+    <x:String x:Key="TextTotalCars">Total Cars</x:String>
+    <x:String x:Key="TextTotalSpent">Total Spent</x:String>
+
     <x:String x:Key="LabelId">ID</x:String>
-    <x:String x:Key="LabelDeparture">Departure</x:String>
-    <x:String x:Key="LabelDestination">Destination</x:String>
+    <x:String x:Key="LabelDeparture">Departure point</x:String>
+    <x:String x:Key="LabelDestination">Destination point</x:String>
     <x:String x:Key="LabelArrivalDate">Arrival date</x:String>
     <x:String x:Key="LabelDistancePanel">Distance</x:String>
-    <x:String x:Key="TextAddTripTitle">Add trip</x:String>
+    <x:String x:Key="TextAddTripTitle">Add Trip</x:String>
     <x:String x:Key="WatermarkDeparture">Departure</x:String>
     <x:String x:Key="WatermarkDestination">Destination</x:String>
-    <x:String x:Key="WatermarkDistanceKm">Distance (km)</x:String>
+    <x:String x:Key="WatermarkDistanceKm">Distance in km</x:String>
+    <x:String x:Key="WatermarkDistanceKM">Distance in km</x:String>
     <x:String x:Key="WatermarkTripType">Trip type</x:String>
     <x:String x:Key="WatermarkCar">Car</x:String>
-    <x:String x:Key="BtnAddTripSubmit">Add trip</x:String>
-    <x:String x:Key="BtnAddCarSubmit">Add Car</x:String>
+    <x:String x:Key="BtnAddTripSubmit">Add Trip</x:String>
+    
+    <x:String x:Key="TextCarLabel">Car</x:String>
+    <x:String x:Key="TextEngineVolume">Engine Vol.</x:String>
+    <x:String x:Key="TextLastService">Last Service</x:String>
+    <x:String x:Key="TextFuelType">Fuel Type</x:String>
+    <x:String x:Key="TextFuelConsumption">Consumption</x:String>
+    <x:String x:Key="TextMileage">Mileage</x:String>
+    <x:String x:Key="TextSpent">Total Spent</x:String>
+
+    <x:String x:Key="WatermarkStationCity">Enter city name (e.g., Kyiv, Lviv)</x:String>
+    <x:String x:Key="BtnSearchStations">Find Gas Stations</x:String>
+    <x:String x:Key="TitleServiceStations">Search Service Stations and Car Services</x:String>
+    <x:String x:Key="WatermarkServiceCity">Enter your city (e.g., Uzhhorod, Mukachevo)</x:String>
+    <x:String x:Key="BtnSearchServices">Search Service Stations</x:String>
+    <x:String x:Key="LabelServiceName">Service Station Name</x:String>
+    <x:String x:Key="LabelServiceAddress">Street / Address</x:String>
 </ResourceDictionary>

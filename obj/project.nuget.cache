@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QOIr7ZHRj+Q=",
+  "dgSpecHash": "4xyD8t+KTDk=",
   "success": true,
   "projectFilePath": "D:\\VS CODE\\Новая папка\\Новая папка\\CarTrips\\CarTrips\\CarTrips.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Users\\User\\.nuget\\packages\\skiasharp.nativeassets.macos\\3.119.3-preview.1.1\\skiasharp.nativeassets.macos.3.119.3-preview.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\skiasharp.nativeassets.webassembly\\3.119.3-preview.1.1\\skiasharp.nativeassets.webassembly.3.119.3-preview.1.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\skiasharp.nativeassets.win32\\3.119.3-preview.1.1\\skiasharp.nativeassets.win32.3.119.3-preview.1.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\tmds.dbus.protocol\\0.90.3\\tmds.dbus.protocol.0.90.3.nupkg.sha512"
   ],
   "logs": [

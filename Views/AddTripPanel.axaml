@@ -1,4 +1,4 @@
-﻿g<UserControl xmlns="https://github.com/avaloniaui"
+﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:CompileBindings="False"
              x:Class="CarTrips.Views.AddTripPanel">
@@ -34,9 +34,19 @@
                         <TextBox.Watermark><DynamicResource ResourceKey="WatermarkTripType"/></TextBox.Watermark>
                     </TextBox>
                     
-                    <TextBox Text="{Binding AddTripVM.NewCar}">
-                        <TextBox.Watermark><DynamicResource ResourceKey="WatermarkCar"/></TextBox.Watermark>
-                    </TextBox>
+                    <StackPanel>
+                        <Label Classes="FieldLabel" Content="{DynamicResource WatermarkCar}"/>
+    
+                        <ComboBox Classes="DarkInput" 
+                                  ItemsSource="{Binding CarsVM.MyCars}" 
+                                  SelectedItem="{Binding AddTripVM.SelectedCar}" 
+                                  DisplayMemberBinding="{Binding Brand}"
+                                  HorizontalAlignment="Stretch">
+                            <ComboBox.PlaceholderText>
+                                <DynamicResource ResourceKey="WatermarkCar"/>
+                            </ComboBox.PlaceholderText>
+                        </ComboBox>
+                    </StackPanel>
                     
                     <TextBlock Text="{Binding AddTripVM.ErrorMessage}" 
                                Foreground="#EF4444" FontSize="12" TextWrapping="Wrap"

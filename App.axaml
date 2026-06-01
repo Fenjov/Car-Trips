@@ -8,7 +8,7 @@
             <ResourceDictionary.ThemeDictionaries>
                 
                 <ResourceDictionary x:Key="Dark">
-                    <SolidColorBrush x:Key="AppBackgroundColor" Color="#1E1E2E"/> 
+                    <SolidColorBrush x:Key="AppBackgroundColor" Color="#0B1C40"/> 
                     <SolidColorBrush x:Key="CardBackgroundColor" Color="#2A395A"/> 
                     <SolidColorBrush x:Key="PrimaryTextColor" Color="White"/> 
                     <SolidColorBrush x:Key="SecondaryTextColor" Color="#A0ABC0"/> 
@@ -16,7 +16,7 @@
                 
                 <ResourceDictionary x:Key="Light">
                     <SolidColorBrush x:Key="AppBackgroundColor" Color="#F3F4F6"/> 
-                    <SolidColorBrush x:Key="CardBackgroundColor" Color="White"/> 
+                    <SolidColorBrush x:Key="CardBackgroundColor" Color="Gray"/> 
                     <SolidColorBrush x:Key="PrimaryTextColor" Color="#1C2742"/> 
                     <SolidColorBrush x:Key="SecondaryTextColor" Color="#4B5563"/> 
                 </ResourceDictionary>

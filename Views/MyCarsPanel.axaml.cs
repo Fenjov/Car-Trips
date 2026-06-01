@@ -10,4 +10,8 @@ public partial class MyCarsPanel : UserControl
     {
         InitializeComponent();
     }
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
 }

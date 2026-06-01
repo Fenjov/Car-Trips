@@ -6,14 +6,17 @@ using System.Text.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CarTrips.Models;
+using CarTrips.Services; // Додано для доступу до SessionManager
 
 namespace CarTrips.ViewModels;
 
 public partial class CarsViewModel : ViewModelBase
 {
     private readonly Action? _onCarAdded;
-    private const string FilePath = "cars_data.json";
-
+    
+    // ДИНАМІЧНИЙ ШЛЯХ ДО ФАЙЛУ: Створює окремий файл для кожного користувача
+    private string FilePath => $"cars_{SessionManager.CurrentUsername}.json";
+    
     public ObservableCollection<Car> MyCars { get; } = new();
 
     // Поля для форми "Додати машину"
@@ -70,14 +73,15 @@ public partial class CarsViewModel : ViewModelBase
     {
         try
         {
-            var json = JsonSerializer.Serialize(MyCars);
+            var json = JsonSerializer.Serialize(MyCars, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(FilePath, json);
         }
         catch { /* Обробка помилок запису */ }
     }
 
-    private void LoadFromFile()
+    public void LoadFromFile()
     {
+        MyCars.Clear();
         if (File.Exists(FilePath))
         {
             try
@@ -86,7 +90,6 @@ public partial class CarsViewModel : ViewModelBase
                 var items = JsonSerializer.Deserialize<ObservableCollection<Car>>(json);
                 if (items != null)
                 {
-                    MyCars.Clear();
                     foreach (var item in items) MyCars.Add(item);
                 }
             }
@@ -102,9 +105,7 @@ public partial class CarsViewModel : ViewModelBase
             // 1. Видаляємо зі списку в пам'яті
             MyCars.Remove(carToDelete);
             
-            // Рядок UpdateStatistics(); ми поки що прибрали, щоб не було помилки!
-            
-            // 2. Зберігаємо оновлений список у JSON файл
+            // 2. Зберігаємо оновлений список у персональний JSON файл
             SaveToFile(); 
         }
     }

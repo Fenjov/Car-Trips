@@ -9,37 +9,47 @@
 
     <Grid x:Name="RootGrid" RowDefinitions="Auto, *" Margin="10,0,20,20">
         
-        <Grid Grid.Row="0" ColumnDefinitions="Auto, Auto, *" Margin="0,0,0,20">
-            
-            <Border Grid.Column="0" Classes="Card" Padding="20" Width="300" Height="140" Margin="0,0,20,0">
+        <Grid Grid.Row="0" ColumnDefinitions="300, *" Margin="0,0,0,20">
+            <Border Grid.Column="0" Classes="Card" Padding="20" Height="140" Margin="0,0,20,0">
                 <Grid ColumnDefinitions="*, Auto">
                     <StackPanel Grid.Column="0" VerticalAlignment="Center" Spacing="5">
                         <TextBlock Text="{DynamicResource TextTotalCars}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="16"/>
-                        <TextBlock Text="{Binding CarsVM.TotalCarsCount}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="36" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding MyCarsVM.TotalCarsCount}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="48" FontWeight="Bold"/>
                     </StackPanel>
-                    <Image Source="avares://CarTrips/Assets/МалаМашина.png" Stretch="UniformToFill" HorizontalAlignment="Right" Width="140" Margin="0,0,-20,0"/>
+                    <Image Source="avares://CarTrips/Assets/МалаМашина.png" Stretch="Uniform" HorizontalAlignment="Right" Width="100"/>
                 </Grid>
             </Border>
 
-            <Border Grid.Column="1" Classes="Card" Padding="20" Width="300" Height="140" Margin="0,0,20,0">
-                <Grid ColumnDefinitions="*, Auto">
-                    <StackPanel Grid.Column="0" VerticalAlignment="Center" Spacing="5">
-                        <TextBlock Text="{DynamicResource TextTotalSpent}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="16"/>
-                        <TextBlock Text="{Binding CarsVM.TotalSpentAllCars, StringFormat='{}{0:N0} грн'}" 
-                                   Foreground="#00FF7F" FontSize="32" FontWeight="Bold"/>       
+            <Border Grid.Column="1" Classes="Card" Padding="15" Height="140">
+                <Grid ColumnDefinitions="*, *, Auto">
+                    <StackPanel Grid.Column="0" Spacing="10" Margin="0,0,10,0">
+                        <TextBox Text="{Binding MyCarsVM.SearchBrand}" Watermark="Марка..." Classes="DarkInput"/>
+                        <TextBox Text="{Binding MyCarsVM.SearchFuel}" Watermark="Паливо..." Classes="DarkInput"/>
                     </StackPanel>
-                    <Image Source="avares://CarTrips/Assets/road.png" Stretch="UniformToFill" HorizontalAlignment="Right" Width="140" Margin="0,0,-20,0"/>
+                    
+                    <StackPanel Grid.Column="1" Spacing="10" Margin="0,0,10,0">
+                        <TextBox Text="{Binding MyCarsVM.SearchEngine}" Watermark="Об'єм..." Classes="DarkInput"/>
+                        <TextBox Text="{Binding MyCarsVM.SearchMileage}" Watermark="Пробіг..." Classes="DarkInput"/>
+                    </StackPanel>
+
+                    <Button Grid.Column="2" 
+                            Content="Пошук" 
+                            Command="{Binding MyCarsVM.ApplyFilterCommand}"
+                            IsEnabled="True"
+                            Background="#00FF7F" 
+                            Foreground="Black" 
+                            FontWeight="Bold"
+                            Width="100" 
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            CornerRadius="10"/>
                 </Grid>
             </Border>
-            
-            <Border Grid.Column="2" Padding="0" Height="140">
-                <Image Source="avares://CarTrips/Assets/Zemla.gif" Width="170" Stretch="UniformToFill" HorizontalAlignment="Center"/>
-            </Border>
-            
         </Grid>
 
         <Border Grid.Row="1" Classes="Card" Padding="25">
-            <Grid RowDefinitions="Auto, *">
+            <Grid RowDefinitions="Auto, Auto, *">
                 
                 <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Margin="0,0,0,15">
                     <TextBlock Grid.Column="0" Text="{DynamicResource MenuMyCar}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="16" VerticalAlignment="Center"/>
@@ -49,47 +59,31 @@
                     </StackPanel>
                 </Grid>
 
-                <ScrollViewer Grid.Row="1">
-                    <ItemsControl ItemsSource="{Binding CarsVM.MyCars}">
+                <Grid Grid.Row="1" ColumnDefinitions="1.2*, 1*, 1*, 1*, 1.2*, 1*, 1.2*, Auto" Margin="0,5,0,5">
+                    <TextBlock Grid.Column="0" Text="{DynamicResource TextCarLabel}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="11" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Text="{DynamicResource TextEngineVolume}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="11" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Column="2" Text="{DynamicResource TextLastService}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="11" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Column="3" Text="{DynamicResource TextFuelType}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="11" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Column="4" Text="{DynamicResource TextFuelConsumption}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="11" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Column="5" Text="{DynamicResource TextMileage}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="11" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Column="6" Text="{DynamicResource TextSpent}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="11" HorizontalAlignment="Left"/>
+                    <Rectangle Grid.Column="7" Width="40"/> 
+                </Grid>
+
+                <ScrollViewer Grid.Row="2">
+                    <ItemsControl ItemsSource="{Binding MyCarsVM.MyCars}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate x:DataType="models:Car">
-                                <Border BorderBrush="{DynamicResource SecondaryTextColor}" BorderThickness="0,0,0,1" Padding="0,15">
+                                <Border BorderBrush="{DynamicResource SecondaryTextColor}" BorderThickness="0,0,0,1" Padding="0,12">
                                     <Grid ColumnDefinitions="1.2*, 1*, 1*, 1*, 1.2*, 1*, 1.2*, Auto" VerticalAlignment="Center">
                                         
-                                        <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                            <TextBlock Text="{DynamicResource TextCarLabel}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="10"/>
-                                            <TextBlock Text="{Binding Brand}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16"/>
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                            <TextBlock Text="{DynamicResource TextEngineVolume}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="10"/>
-                                            <TextBlock Text="{Binding EngineVolume}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16"/>
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                            <TextBlock Text="{DynamicResource TextLastService}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="10"/>
-                                            <TextBlock Text="{Binding LastService}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16"/>
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                            <TextBlock Text="{DynamicResource TextFuelType}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="10"/>
-                                            <TextBlock Text="{Binding FuelType}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16"/>
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                            <TextBlock Text="{DynamicResource TextFuelConsumption}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="10"/>
-                                            <TextBlock Text="{Binding FuelConsumption}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16"/>
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                            <TextBlock Text="{DynamicResource TextMileage}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="10"/>
-                                            <TextBlock Text="{Binding Mileage}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16"/>
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                            <TextBlock Text="{DynamicResource TextSpent}" Foreground="{DynamicResource SecondaryTextColor}" FontSize="10"/>
-                                            <TextBlock Text="{Binding TotalSpent, StringFormat='{}{0:N0} грн'}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16"/>
-                                        </StackPanel>
+                                        <TextBlock Grid.Column="0" Text="{Binding Brand}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding EngineVolume}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding LastService}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding FuelType}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding FuelConsumption}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Column="5" Text="{Binding Mileage}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Column="6" Text="{Binding TotalSpent, StringFormat='{}{0:N0} грн'}" Foreground="{DynamicResource PrimaryTextColor}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
                                         <Button Grid.Column="7" 
                                                 Background="#EF4444" 
@@ -97,7 +91,7 @@
                                                 Width="30" Height="30" 
                                                 VerticalAlignment="Center"
                                                 Margin="10,0,0,0"
-                                                Command="{Binding #RootGrid.DataContext.CarsVM.DeleteCarCommand}"
+                                                Command="{Binding #RootGrid.DataContext.MyCarsVM.DeleteCarCommand}"
                                                 CommandParameter="{Binding}">
                                             <TextBlock Text="🗑" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Button>

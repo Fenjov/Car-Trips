@@ -46,6 +46,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [D:/VS CODE/Новая папка/Новая папка/CarTrips/CarTrips/Views/CenterTripsPanel.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[D:/VS CODE/Новая папка/Новая папка/CarTrips/CarTrips/Views/LoginPanel.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [D:/VS CODE/Новая папка/Новая папка/CarTrips/CarTrips/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
@@ -55,8 +58,14 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [D:/VS CODE/Новая папка/Новая папка/CarTrips/CarTrips/Views/RecentTripsPanel.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[D:/VS CODE/Новая папка/Новая папка/CarTrips/CarTrips/Views/ServiceStationsPanel.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [D:/VS CODE/Новая папка/Новая папка/CarTrips/CarTrips/Views/SettingsPanel.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [D:/VS CODE/Новая папка/Новая папка/CarTrips/CarTrips/Views/SidebarMenu.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[D:/VS CODE/Новая папка/Новая папка/CarTrips/CarTrips/Views/StationsPanel.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
