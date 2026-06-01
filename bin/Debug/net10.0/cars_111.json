@@ -1,0 +1,47 @@
+[
+  {
+    "Brand": "Mercedes",
+    "EngineVolume": "4.4",
+    "LastService": "03.03.2024",
+    "FuelType": "\u0414\u0438\u0437\u0435\u043B\u044C",
+    "FuelConsumption": 20,
+    "Mileage": "100000",
+    "TotalSpent": 1040000
+  },
+  {
+    "Brand": "Porshe",
+    "EngineVolume": "4.4",
+    "LastService": "30.05.2026",
+    "FuelType": "\u0411\u0435\u043D\u0437\u0438\u043D",
+    "FuelConsumption": 25,
+    "Mileage": "10000",
+    "TotalSpent": 137500
+  },
+  {
+    "Brand": "Lexus",
+    "EngineVolume": "5.0",
+    "LastService": "20.05.2026",
+    "FuelType": "\u0411\u0435\u043D\u0437\u0438\u043D",
+    "FuelConsumption": 22,
+    "Mileage": "30000",
+    "TotalSpent": 363000
+  },
+  {
+    "Brand": "AUDI",
+    "EngineVolume": "2.0",
+    "LastService": "13.06.2022",
+    "FuelType": "\u0414\u0438\u0437\u0435\u043B\u044C",
+    "FuelConsumption": 9,
+    "Mileage": "150000",
+    "TotalSpent": 702000
+  },
+  {
+    "Brand": "BMW",
+    "EngineVolume": "3.0",
+    "LastService": "20.09.2025",
+    "FuelType": "\u0414\u0438\u0437\u0435\u043B\u044C",
+    "FuelConsumption": 16,
+    "Mileage": "44300",
+    "TotalSpent": 368576
+  }
+]
