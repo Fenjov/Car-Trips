@@ -1,0 +1,20 @@
+[
+  {
+    "Brand": "Lexus",
+    "EngineVolume": "5.0",
+    "LastService": "03.05.2026",
+    "FuelType": "\u0415\u043B\u0435\u043A\u0442\u0440\u043E",
+    "FuelConsumption": 25,
+    "Mileage": "3000",
+    "TotalSpent": 7500
+  },
+  {
+    "Brand": "Mercedes",
+    "EngineVolume": "4.4",
+    "LastService": "02.02.11",
+    "FuelType": "\u0414\u0438\u0437\u0435\u043B\u044C",
+    "FuelConsumption": 6.7,
+    "Mileage": "89000",
+    "TotalSpent": 310076
+  }
+]

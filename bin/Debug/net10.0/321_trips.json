@@ -1,0 +1,20 @@
+[
+  {
+    "Id": 2,
+    "Date": "1234",
+    "Departure": "123",
+    "Destination": "12",
+    "Distance": "1234",
+    "TripType": "123",
+    "Car": ""
+  },
+  {
+    "Id": 1,
+    "Date": "23",
+    "Departure": "\u0444\u0456\u0432\u0430\u043F",
+    "Destination": "\u0439\u0446\u0443\u043A\u043F",
+    "Distance": "12345",
+    "TripType": "345",
+    "Car": "\u041D\u0435 \u0432\u043A\u0430\u0437\u0430\u043D\u043E"
+  }
+]

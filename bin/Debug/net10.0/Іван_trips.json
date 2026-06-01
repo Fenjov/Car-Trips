@@ -1,0 +1,12 @@
+[
+  {
+    "Id": 1,
+    "Date": "12.12.2023",
+    "Departure": "\u0414\u0456\u043C",
+    "Destination": "\u0420\u043E\u0431\u043E\u0442\u0430",
+    "Distance": "30",
+    "TripType": "\u0420\u043E\u0431\u043E\u0447\u0430",
+    "Car": "Lexus",
+    "EstimatedCost": 75
+  }
+]

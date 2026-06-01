@@ -43,7 +43,7 @@
         
         <Button Classes="MenuBtn" Command="{Binding GoToPageCommand}" CommandParameter="СТО">
             <StackPanel Orientation="Horizontal" Spacing="15">
-                <TextBlock Text="   ️" VerticalAlignment="Center"/>
+                <TextBlock Text=" ️" VerticalAlignment="Center"/>
                 <Label Content="{DynamicResource MenuServiceStations}" VerticalAlignment="Center" Padding="0"/>
             </StackPanel>
         </Button>

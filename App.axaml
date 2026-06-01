@@ -15,10 +15,10 @@
                 </ResourceDictionary>
                 
                 <ResourceDictionary x:Key="Light">
-                    <SolidColorBrush x:Key="AppBackgroundColor" Color="#F3F4F6"/> 
-                    <SolidColorBrush x:Key="CardBackgroundColor" Color="Gray"/> 
-                    <SolidColorBrush x:Key="PrimaryTextColor" Color="#1C2742"/> 
-                    <SolidColorBrush x:Key="SecondaryTextColor" Color="#4B5563"/> 
+                    <SolidColorBrush x:Key="AppBackgroundColor" Color="#808f87"/> 
+                    <SolidColorBrush x:Key="CardBackgroundColor" Color="White"/> 
+                    <SolidColorBrush x:Key="PrimaryTextColor" Color="#725A7A"/> 
+                    <SolidColorBrush x:Key="SecondaryTextColor" Color="#0B1C40"/> 
                 </ResourceDictionary>
                 
             </ResourceDictionary.ThemeDictionaries>

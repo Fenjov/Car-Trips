@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Avalonia;
+using Avalonia.Controls; // <--- ОСЬ ЦЕЙ РЯДОК ВИРІШУЄ ПОМИЛКУ
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CarTrips.Models;
@@ -15,7 +17,7 @@ namespace CarTrips.ViewModels
         public ObservableCollection<Station> FoundServices { get; } = new();
 
         [ObservableProperty] private string _cityName = string.Empty;
-        [ObservableProperty] private string _statusMessage = "Введіть назву міста для пошуку СТО";
+        [ObservableProperty] private string _statusMessage = string.Empty; 
         [ObservableProperty] private bool _isLoading = false;
 
         private readonly HttpClient _httpClient;
@@ -23,8 +25,17 @@ namespace CarTrips.ViewModels
         public ServiceStationsViewModel()
         {
             _httpClient = new HttpClient();
-            // Обов'язковий заголовок, щоб OSM не блокував запити
             _httpClient.DefaultRequestHeaders.Add("User-Agent", "CarTripsApp/1.0"); 
+        }
+
+        // Той самий надійний метод-помічник
+        private string GetLocalizedString(string key, string fallback)
+        {
+            if (Application.Current != null && Application.Current.TryGetResource(key, out var resource) && resource != null)
+            {
+                return resource.ToString()!;
+            }
+            return fallback;
         }
 
         [RelayCommand]
@@ -32,26 +43,23 @@ namespace CarTrips.ViewModels
         {
             if (string.IsNullOrWhiteSpace(CityName))
             {
-                StatusMessage = "Будь ласка, введіть назву міста!";
+                StatusMessage = GetLocalizedString("StatusEmptyCity", "Будь ласка, введіть назву міста!");
                 return;
             }
 
             IsLoading = true;
-            StatusMessage = $"Шукаємо автосервіси у місті {CityName}...";
+            StatusMessage = "...";
             FoundServices.Clear();
 
-            // Хеш-сет для відстеження дублікатів за повним текстом адреси
             var seenAddresses = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             string cleanCity = CityName.Trim();
 
-            // Окремі чисті ключові слова, які Nominatim чудово розуміє як категорії
             string[] searchTerms = { "СТО", "car_repair", "автосервіс", "шиномонтаж" };
 
             try
             {
                 foreach (string term in searchTerms)
                 {
-                    // Формуємо точний запит: "Категорія Місто"
                     string url = $"https://nominatim.openstreetmap.org/search?q={Uri.EscapeDataString(term + " " + cleanCity)}&format=json&addressdetails=1&limit=20";
 
                     var response = await _httpClient.GetStringAsync(url);
@@ -62,14 +70,12 @@ namespace CarTrips.ViewModels
 
                     foreach (JsonElement element in doc.RootElement.EnumerateArray())
                     {
-                        // 1. Отримуємо назву СТО
                         string name = "";
                         if (element.TryGetProperty("name", out JsonElement nameProp) && !string.IsNullOrEmpty(nameProp.GetString()))
                         {
                             name = nameProp.GetString()!;
                         }
 
-                        // 2. Отримуємо та форматуємо адресу
                         string address = "Вулиця не вказана";
                         string fullAddress = "";
                         
@@ -79,36 +85,25 @@ namespace CarTrips.ViewModels
                             string[] parts = fullAddress.Split(',');
 
                             if (string.IsNullOrEmpty(name) && parts.Length > 0)
-                            {
                                 name = parts[0].Trim();
-                            }
 
-                            // Витягуємо вулицю та номер будинку
                             if (parts.Length >= 3)
-                            {
                                 address = $"{parts[1].Trim()}, {parts[2].Trim()}";
-                            }
                             else
-                            {
                                 address = fullAddress;
-                            }
                         }
 
-                        // Якщо назви взагалі немає або вона збігається з початком адреси, ставимо дефолт
                         if (string.IsNullOrEmpty(name) || name.ToLower().Contains("repair") || name == address.Split(',')[0].Trim())
                         {
                             name = term.Equals("шиномонтаж", StringComparison.OrdinalIgnoreCase) ? "Шиномонтаж" : "Автосервіс (СТО)";
                         }
 
-                        // Пропускаємо, якщо назва збігається з назвою самого міста
                         if (name.Equals(cleanCity, StringComparison.OrdinalIgnoreCase))
                             continue;
 
-                        // Захист від дублікатів: якщо така адреса вже була додана з попереднього кроку циклу — ігноруємо
                         if (!string.IsNullOrEmpty(fullAddress) && !seenAddresses.Add(fullAddress))
                             continue;
 
-                        // Додаємо знайдену унікальну станцію
                         FoundServices.Add(new Station
                         {
                             Name = name,
@@ -118,19 +113,20 @@ namespace CarTrips.ViewModels
                     }
                 }
 
-                // Виводимо фінальний статус
                 if (FoundServices.Count > 0)
                 {
-                    StatusMessage = $"Знайдено унікальних СТО: {FoundServices.Count}";
+                    string pattern = GetLocalizedString("StatusFoundServicesPattern", "Знайдено унікальних СТО: {0}");
+                    StatusMessage = string.Format(pattern, FoundServices.Count);
                 }
                 else
                 {
-                    StatusMessage = $"У місті {CityName} автосервісів не знайдено. Спробуйте інше місто.";
+                    string pattern = GetLocalizedString("StatusNotFoundPattern", "У місті {0} автосервісів не знайдено.");
+                    StatusMessage = string.Format(pattern, CityName);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                StatusMessage = "Помилка завантаження даних. Перевірте інтернет!";
+                StatusMessage = GetLocalizedString("StatusError", "Помилка завантаження даних. Перевірте інтернет!");
             }
             finally
             {
